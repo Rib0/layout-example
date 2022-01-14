@@ -1,0 +1,74 @@
+@use "sass:map";
+
+@include block(buy-course) {
+    background-color: $color-dark-gray;
+
+    @include element(inner) {
+        padding: 36px 0;
+        display: flex;
+        flex-wrap: wrap;
+
+        & > div:not(:last-child) { // вложенность, чтобы не давать каждому элементу внутри inner margin-right
+            margin-right: 40px;
+        }
+    }
+
+    @include element(button) {
+        @include media-query(map.get($grid-breakpoints, "lg")) {
+            margin-bottom: 50px;
+        }
+    }
+
+    @include element(students) {
+        margin-bottom: 50px;
+    }
+
+    @include element(stats-container) {
+        display: flex;
+
+        &:not(:last-of-type) {
+            margin-bottom: 8px;
+        }
+    }
+
+    @include element(stats-text) {
+        padding-right: 30px;
+        opacity: 0.4;
+    }
+
+    @include element(stats-amount) {
+        flex-grow: 1;
+        text-align: right;
+        font-weight: 700;
+
+        @include modif(no-grow) {
+            flex-grow: 0;
+        }
+    }
+
+    @include element(progress) {
+        flex: 1 1 auto;
+
+        @include media-query(map.get($grid-breakpoints, "lg")) {
+            flex: 0 0 100%;
+        }
+    }
+
+    @include element(progress-bar) {
+        background-color: $color-white;
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    @include element(progress-bar-completed) {
+        width: 60%;
+        height: 6px;
+        background: map.get($gradients, "brick-red-mauve");
+    }
+
+    @include element(progress-values-range) {
+        display: flex;
+        justify-content: space-between;
+        opacity: 0.4;
+    }
+}

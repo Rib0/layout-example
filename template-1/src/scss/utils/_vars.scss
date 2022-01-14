@@ -1,0 +1,28 @@
+$color-black: #000;
+$color-white: #FFF;
+$color-dark-gray: #121212;
+$color-light-gray: #706d6d;
+$color-violet: #C89AFC;
+$color-slate-blue: #7C6AFA;
+$color-brick-red: #DF5950;
+$color-mauve: #451046;
+
+$gradients: (
+    "violet-slate-blue": linear-gradient(95deg, #{$color-violet} 10%, #{$color-slate-blue} 90%),
+    "violet-slate-blue-reverse": linear-gradient(95deg, #{$color-slate-blue} 10%, #{$color-violet} 90%),
+    "brick-red-mauve": linear-gradient(95deg, #{$color-brick-red} 10%, #{$color-mauve} 94%),
+);
+
+$default-font-size: 16px;
+
+$default-line-height: 1.4;
+
+$section-bottom-indent: 8rem;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1060px,
+);

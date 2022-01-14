@@ -1,0 +1,66 @@
+@use "sass:list";
+@use 'sass:map';
+
+$block-name: 'advantages';
+$images-list: 'computer.png', 'flash-card.png', 'cable.png';
+
+@include block(#{$block-name}) {
+    @include element(header) {
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    @include element(items) {
+        display: flex;
+
+        @include media-query(map.get($grid-breakpoints, "md")) {
+            flex-wrap: wrap;
+        }
+    }
+
+    @include element(item) {
+        flex: 0 1 33%;
+        max-width: 33%;
+        text-align: center;
+
+        &:not(:last-child) {
+            margin-right: 40px;
+        }
+
+        @include media-query(map.get($grid-breakpoints, "md")) {
+            flex: 0 0 100%;
+            max-width: 100%;
+            margin-right: 0 !important;
+
+            &:not(:last-child) {
+                margin-bottom: 40px;
+            }
+        }
+    }
+
+    @include element(item-img) {
+        height: 100px;
+        margin-bottom: 65px;
+
+        @each $image in $images-list {
+            @include modif(#{list.index($images-list, $image)}) {
+                background: url('~Images/#{$block-name}/#{$image}') no-repeat bottom center;
+                background-size: contain;
+            }
+        };
+
+        @include media-query(map.get($grid-breakpoints, "md")) {
+            margin-bottom: 20px;
+        }
+    }
+
+    @include element(item-header) {
+        margin-bottom: 30px;
+        font-size: 1.5rem;
+    }
+
+    @include element(item-description) {
+        opacity: 0.4;
+        padding: 0 20px;
+    }
+}

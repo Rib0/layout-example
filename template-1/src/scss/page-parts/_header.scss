@@ -1,0 +1,54 @@
+@use "sass:map";
+
+@include block(header) {
+    background-color: $color-black;
+    background: url('~Images/header-bg.png') no-repeat right top;
+    background-size: cover;
+    padding-top: 38px;
+
+    @include element(burger) {
+        background: url('~Images/burger-menu.svg') no-repeat center;
+        width: 50px;
+        height: 50px;
+        z-index: 2;
+        display: none;
+
+        @include media-query(map.get($grid-breakpoints, "xl")) {
+            display: block;
+        }
+    }
+
+    @include element(top) {
+        display: flex;
+        align-items: center;
+    }
+
+    @include element(logo) {
+        flex: 2 1 auto;
+        z-index: 2;
+        margin-right: 20px;
+
+        @include media-query(map.get($grid-breakpoints, "xl")) {
+            display: block;
+            flex-grow: 0;
+        }
+    }
+
+    @include element(enter-account) {
+        flex: 1 1 auto;
+        text-align: right;
+    }
+
+    @include element(info) {
+        padding: 180px 0 210px;
+        max-width: 920px;
+    }
+
+    @include element(caption) {
+        margin-bottom: 50px;
+
+        @include media-query(map.get($grid-breakpoints, "sm")) {
+            text-align: center;
+        }
+    }
+}

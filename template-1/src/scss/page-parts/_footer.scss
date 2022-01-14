@@ -1,0 +1,33 @@
+@include block(footer) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: inherit;
+    background-size: cover;
+    padding-bottom: 30px;
+
+    @include element(header) {
+        margin-bottom: 30px;
+    }
+
+    @include element(description) {
+        margin-bottom: 60px;
+        max-width: 410px;
+        opacity: 0.5;
+        font-size: 0.9rem;
+    }
+
+    @include element(subscribe-input) {
+        margin-bottom: 40px;
+    }
+
+    @include element(socials) {
+        margin-bottom: 50px;
+    }
+
+    @include element(copyright) {
+        opacity: 0.8;
+        font-size: 0.9rem;
+    }
+}

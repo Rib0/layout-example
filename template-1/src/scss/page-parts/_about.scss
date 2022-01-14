@@ -1,0 +1,46 @@
+@use "sass:map";
+
+@include block(about) {
+    @include element(inner) {
+        display: flex;
+
+        @include media-query(map.get($grid-breakpoints, "lg")) {
+            flex-wrap: wrap;
+        }
+    }
+
+    @include element(img-container) {
+        border: 30px solid transparent;
+        border-image: map.get($gradients, "violet-slate-blue");
+        border-image-slice: 1;
+        margin-right: 140px;
+        max-height: 500px;
+        flex: 0 1 40%;
+        max-width: 40%;
+
+        @include media-query(map.get($grid-breakpoints, "lg")) {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+    }
+
+    @include element(img) {
+        position: relative;
+        top: 65px;
+    }
+
+    @include element(text) {
+        flex: 0 1 60%;
+        padding-top: 65px;
+        max-width: 640px;
+
+        @include media-query(map.get($grid-breakpoints, "lg")) {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+    }
+
+    @include element(header) {
+        margin-bottom: 40px;
+    }
+}

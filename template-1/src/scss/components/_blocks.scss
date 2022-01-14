@@ -1,0 +1,27 @@
+@use 'sass:map';
+
+@include block(blocks) {
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: repeat(4, 110px);
+
+    @include media-query(map.get($grid-breakpoints, "sm")) {
+        grid-template-columns: repeat(2, 110px);
+        justify-content: center;
+    }
+
+    @include element(item) {
+        padding: 20px 30px;
+        background-color: $color-dark-gray;
+        text-align: center;
+    }
+
+    @include element(item-value) {
+        font-weight: 700;
+        font-size: 2rem;
+    }
+
+    @include element(item-unit) {
+        opacity: 0.4;
+    }
+}

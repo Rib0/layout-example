@@ -1,0 +1,42 @@
+@use 'sass:map';
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: $default-font-size;
+
+    @include media-query(map.get($grid-breakpoints, "md")) {
+        font-size: $default-font-size - 4;
+    }
+
+    @include media-query(map.get($grid-breakpoints, "sm")) {
+        font-size: $default-font-size - 6;
+    }
+}
+
+body {
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    line-height: $default-line-height;
+    color: $color-white;
+    background: url('~Images/general-bg.png') no-repeat;
+    height: 2000px;
+}
+
+h1, h2 {
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+h2 {
+    font-size: 3rem;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}

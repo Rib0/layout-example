@@ -1,0 +1,44 @@
+@use "sass:map";
+
+@include block(nav) {
+    transition: width .3s linear;
+    overflow: hidden;
+    z-index: 1;
+
+    @include media-query(map.get($grid-breakpoints, "xl")) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100vh;
+        padding-top: 100px;
+        background-color: black;
+    }
+
+    &.active {
+        width: 100vw;
+    }
+
+    @include element(items) {
+        display: flex;
+
+        @include media-query(map.get($grid-breakpoints, "xl")) {
+            display: block;
+            text-align: center;
+        }
+    }
+
+    @include element(item-link) {
+        color: inherit;
+        text-decoration: none;
+        padding: 11px 23px;
+        display: block;
+        border: 3px solid transparent;
+
+        &:hover, &:active {
+            border: 3px solid transparent;
+            border-image: map.get($gradients, "brick-red-mauve");
+            border-image-slice: 1;
+        }
+    }
+}

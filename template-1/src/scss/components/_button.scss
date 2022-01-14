@@ -1,0 +1,33 @@
+@use "sass:map";
+
+@include block(button) {
+    border: none;
+    color: inherit;
+    white-space: nowrap;
+    padding: 12px 40px;
+    border-radius: 50px;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 400;
+
+    &:active {
+        text-decoration: underline;
+    }
+
+    @include modif(theme) {
+        &--violet-slate-blue {
+            background: map.get($gradients, "violet-slate-blue");
+        }
+
+        &--brick-red-mauve {
+            background: map.get($gradients, "brick-red-mauve");
+            font-weight: 700;
+        }
+
+        &--common {
+            background-color: transparent;
+            border-radius: 30px;
+            border: 1px solid $color-white
+        }
+    }
+}

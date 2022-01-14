@@ -1,0 +1,44 @@
+$bem-element-separator: '__' !default;
+$bem-modifier-separator: '--' !default;
+
+// BEM: Block
+@mixin block($name) {
+    .#{$name} {
+        @content;
+    }
+}
+
+// BEM: Element
+@mixin element($name) {
+    @at-root {
+        $selector: nth(&, 1);
+        $parent: nth($selector, length($selector));
+
+        @if str-index($parent, $bem-element-separator) {
+            @error '#{$parent} is already an element';
+        }
+
+        #{&}#{$bem-element-separator}#{$name} {
+            @content;
+        }
+    }
+}
+
+// BEM: Modifier
+@mixin modif($name) {
+    @at-root {
+        $selector: nth(&, 1);
+        $parent: nth($selector, length($selector));
+
+        @if str-index($parent, $bem-modifier-separator) {
+            @error '#{$parent} is already modified';
+        }
+
+        // Add the modifier and rules
+        #{$parent}#{$bem-modifier-separator}#{$name} {
+            @extend #{$parent};
+
+            @content;
+        }
+    }
+}

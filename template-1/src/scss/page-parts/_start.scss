@@ -1,0 +1,76 @@
+@use "sass:map";
+
+@include block(start) {
+    @include element(top) {
+        margin-bottom: 30px;
+    }
+
+    @include element(header) {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
+    @include element(img) {
+        width: 90px;
+        height: 90px;
+        background: url('~Images/semicircle.png') no-repeat;
+        margin-right: 20px;
+    }
+
+    @include element(description) {
+        max-width: 410px;
+        opacity: 0.4;
+        font-size: 0.9rem;
+    }
+
+    @include element(stage-col) {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+
+    @include element(stage-percents) {
+        display: flex;
+        font-size: 2.1rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+
+    @include element(stages) {
+        display: flex;
+        align-items: center;
+        margin-bottom: 35px;
+    }
+
+    @include element(stages-col) {
+        @extend .start__stage-col;
+
+        flex: 0 0 25%;
+        max-width: 25%;
+        height: 10px;
+        background: map.get($gradients, "violet-slate-blue");
+
+        &:nth-child(2n) {
+            background: map.get($gradients, "violet-slate-blue-reverse");
+        }
+
+        @for $i from 1 through 4 {
+            &:nth-child(#{$i}) {
+                padding: 35px - $i * 10px + 5 0;
+            }
+        }
+    }
+
+    @include element(stage-description) {
+        display: flex;
+        opacity: 0.4;
+        font-size: 0.9rem;
+    }
+
+    @include element(stage-description-col) {
+        @extend .start__stage-col;
+
+        max-width: 410px;
+        padding-right: 18px;
+    }
+}

@@ -1,0 +1,15 @@
+@use 'sass:map';
+
+$main-elements: 'buy-course', 'about', 'start', 'advantages', 'partners', 'program';
+
+@include block(main) {
+    padding-bottom: $section-bottom-indent;
+    background: inherit;
+    background-size: cover;
+
+    @each $element in $main-elements {
+        @include element(#{$element}) {
+            margin-bottom: $section-bottom-indent;
+        }
+    }
+}

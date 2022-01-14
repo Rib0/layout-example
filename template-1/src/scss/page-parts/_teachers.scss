@@ -1,0 +1,62 @@
+@use 'sass:map';
+
+@include block(teachers) {
+    @include element(header) {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
+    @include element(img) {
+        width: 90px;
+        height: 90px;
+        background: url('~Images/semicircle.png') no-repeat;
+        margin-right: 35px;
+        transform: rotate(-45deg);
+    }
+
+    @include element(items) {
+        display: flex;
+        margin: 0 -20px;
+        flex-wrap: wrap;
+
+        @include media-query(map.get($grid-breakpoints, "md")) {
+            margin: 0;
+        }
+    }
+
+    @include element(item) {
+        flex: 0 0 33.33%;
+        max-width: 33.33%;
+        text-align: center;
+        padding: 0 20px;
+
+        @include media-query(map.get($grid-breakpoints, "md")) {
+            flex: 0 0 100%;
+            max-width: 100%;
+
+            &:not(:last-child) {
+                margin-bottom: 60px;
+            }
+        }
+    }
+
+    @include element(item-photo) {
+        width: 190px;
+        height: 190px;
+        margin: 0 auto 40px;
+        border-radius: 50%;
+    }
+
+    @include element(item-name) {
+        font-size: 1.5rem;
+        font-weight: 500;
+        margin-bottom: 15px;
+    }
+
+    @include element(item-type) {
+        font-size: 0.9rem;
+        opacity: 0.8;
+        margin-bottom: 35px;
+    }
+}

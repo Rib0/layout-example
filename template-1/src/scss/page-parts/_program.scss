@@ -1,0 +1,119 @@
+@use "sass:map";
+
+@include block(program) {
+
+    @include element(inner) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    @include element(img) {
+        width: 90px;
+        height: 90px;
+        margin-bottom: 30px;
+        background: url('~Images/semicircle.png') no-repeat;
+        transform: rotate(135deg);
+    }
+
+    @include element(header) {
+        margin-bottom: 30px;
+    }
+
+    @include element(description) {
+        opacity: 0.4;
+        margin-bottom: 80px;
+        max-width: 410px;
+    }
+
+    @include element(parts) {
+        width: 100%;
+        padding: 0 55px;
+        position: relative;
+
+        &:after {
+            content: '';
+            width: 6px;
+            height: calc(100% + 16px);
+            position: absolute;
+            top: -8px;
+            left: calc(50% - 3px);
+            background: map.get($gradients, "violet-slate-blue");
+        }
+
+        @include media-query(map.get($grid-breakpoints, "md")) {
+            &:after {
+                display: none;
+            }
+        }
+    }
+
+    @include element(part-row) {
+        display: flex;
+
+        @include modif(align) {
+            &--left {
+                text-align: right;
+
+                & .program__part-description:after {
+                    right: -67px;
+                }
+
+                @include media-query(map.get($grid-breakpoints, "md")) {
+                    justify-content: center;
+                    text-align: center;
+                }
+            }
+
+            &--right {
+                justify-content: flex-end;
+                text-align: left;
+
+                & .program__part-description:after {
+                    left: -67px;
+                }
+
+                @include media-query(map.get($grid-breakpoints, "md")) {
+                    justify-content: center;
+                    text-align: center;
+                }
+            }
+        }
+
+        @include media-query(map.get($grid-breakpoints, "md")) {
+            margin-bottom: 40px;
+        }
+    }
+
+    @include element(part) {
+        max-width: 230px;
+    }
+
+    @include element(part-header) {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+        opacity: 0.4;
+    }
+
+    @include element(part-description) {
+        position: relative;
+        font-size: 1.1rem;
+
+        &:after {
+            content: '';
+            position: absolute;
+            top: 8px;
+            width: 40px;
+            height: 1px;
+            background-color: $color-white;
+            opacity: 0.3;
+        }
+
+        @include media-query(map.get($grid-breakpoints, "md")) {
+            &:after {
+                display: none;
+            }
+        }
+    }
+}
